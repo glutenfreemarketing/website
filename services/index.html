@@ -16,22 +16,53 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #0a0a0a;
+            background: linear-gradient(135deg, #001a0a 0%, #002d14 25%, #001508 50%, #003d1f 75%, #000a05 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 80%, rgba(7, 133, 33, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(15, 201, 58, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(7, 133, 33, 0.05) 0%, transparent 70%);
+            animation: floatBlobs 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes floatBlobs {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
         }
 
         .header {
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
             box-shadow: 0 4px 30px rgba(7, 133, 33, 0.3);
             padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 2px solid #078521;
+            border-bottom: 2px solid rgba(7, 133, 33, 0.5);
         }
 
         .header-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 40px;
             display: flex;
@@ -48,7 +79,7 @@
         .logo {
             width: 60px;
             height: 60px;
-            filter: drop-shadow(0 0 10px rgba(7, 133, 33, 0.5));
+            filter: drop-shadow(0 0 15px rgba(7, 133, 33, 0.6));
         }
 
         .logo-text {
@@ -90,45 +121,76 @@
         }
 
         .page-header {
+            position: relative;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 40px 60px;
+            padding: 100px 40px 80px;
             text-align: center;
+            z-index: 1;
         }
 
         .page-title {
-            font-size: 3.5em;
-            background: linear-gradient(135deg, #078521 0%, #0fc93a 100%);
+            font-size: 4em;
+            background: linear-gradient(135deg, #078521 0%, #0fc93a 50%, #078521 100%);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 20px;
             font-weight: 800;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
         }
 
         .page-subtitle {
-            font-size: 1.3em;
+            font-size: 1.4em;
             color: #aaa;
             max-width: 700px;
             margin: 0 auto;
         }
 
         .services-container {
-            max-width: 1200px;
+            position: relative;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 40px 100px;
+            padding: 0 40px 120px;
+            z-index: 1;
+        }
+
+        .services-organic {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
         }
 
         .service-card {
-            background: rgba(20, 20, 20, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(15, 30, 20, 0.6);
+            backdrop-filter: blur(15px);
             padding: 50px;
-            border-radius: 20px;
-            border: 1px solid rgba(7, 133, 33, 0.3);
-            margin-bottom: 30px;
-            transition: all 0.4s;
+            border-radius: 45px;
+            border: 2px solid rgba(7, 133, 33, 0.4);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            flex: 0 1 calc(50% - 25px);
+            min-width: 320px;
+        }
+
+        .service-card:nth-child(odd) {
+            transform: translateY(30px) rotate(-1.5deg);
+        }
+
+        .service-card:nth-child(even) {
+            transform: translateY(-30px) rotate(1.5deg);
+        }
+
+        .service-card:nth-child(3n) {
+            transform: translateY(15px) rotate(0.8deg);
         }
 
         .service-card:before {
@@ -138,8 +200,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(7, 133, 33, 0.1), transparent);
-            transition: left 0.6s;
+            background: linear-gradient(90deg, transparent, rgba(7, 133, 33, 0.15), transparent);
+            transition: left 0.7s;
         }
 
         .service-card:hover:before {
@@ -147,81 +209,92 @@
         }
 
         .service-card:hover {
-            transform: translateX(10px);
-            border-color: #078521;
-            box-shadow: 0 20px 60px rgba(7, 133, 33, 0.3);
+            transform: scale(1.03) rotate(0deg) translateY(0);
+            border-color: #0fc93a;
+            box-shadow: 0 30px 80px rgba(7, 133, 33, 0.5);
+            background: rgba(15, 40, 25, 0.8);
         }
 
         .service-header {
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: 25px;
+            margin-bottom: 25px;
         }
 
         .service-icon {
-            font-size: 3em;
-            filter: drop-shadow(0 0 20px rgba(7, 133, 33, 0.5));
+            font-size: 3.5em;
+            filter: drop-shadow(0 0 25px rgba(7, 133, 33, 0.6));
+            flex-shrink: 0;
         }
 
         .service-card h2 {
-            font-size: 2em;
+            font-size: 1.8em;
             color: #0fc93a;
             font-weight: 600;
+            line-height: 1.3;
         }
 
         .service-card p {
             color: #bbb;
-            font-size: 1.15em;
-            line-height: 1.8;
+            font-size: 1.1em;
+            line-height: 1.9;
         }
 
         .cta-section {
+            position: relative;
             max-width: 900px;
-            margin: 60px auto 0;
+            margin: 80px auto 0;
             padding: 60px 50px;
             text-align: center;
-            background: linear-gradient(135deg, rgba(7, 133, 33, 0.2) 0%, rgba(15, 201, 58, 0.2) 100%);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 2px solid #078521;
+            background: rgba(15, 30, 20, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            border: 3px solid rgba(7, 133, 33, 0.5);
+            box-shadow: 0 20px 60px rgba(7, 133, 33, 0.3);
+            z-index: 1;
         }
 
         .cta-section h2 {
-            font-size: 2.5em;
-            color: #0fc93a;
+            font-size: 2.8em;
+            background: linear-gradient(135deg, #078521 0%, #0fc93a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 20px;
         }
 
         .cta-section p {
-            font-size: 1.2em;
+            font-size: 1.3em;
             color: #ccc;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         .btn {
             display: inline-block;
-            padding: 18px 50px;
+            padding: 20px 55px;
             background: linear-gradient(135deg, #078521 0%, #0fc93a 100%);
             color: white;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 60px;
             font-weight: 600;
-            font-size: 1.2em;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(7, 133, 33, 0.4);
+            font-size: 1.3em;
+            transition: all 0.4s;
+            box-shadow: 0 15px 40px rgba(7, 133, 33, 0.4);
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(7, 133, 33, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(7, 133, 33, 0.6);
         }
 
         .footer {
-            background: rgba(0, 0, 0, 0.95);
+            position: relative;
+            background: rgba(0, 0, 0, 0.9);
             padding: 60px 40px 20px;
-            margin-top: 100px;
-            border-top: 2px solid #078521;
+            margin-top: 120px;
+            border-top: 2px solid rgba(7, 133, 33, 0.5);
+            z-index: 1;
         }
 
         .footer-content {
@@ -266,14 +339,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5em;
-            transition: all 0.3s;
+            transition: all 0.4s;
+            overflow: hidden;
+        }
+
+        .social-links a img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            transition: filter 0.3s;
         }
 
         .social-links a:hover {
             background: linear-gradient(135deg, #078521 0%, #0fc93a 100%);
-            transform: translateY(-5px) rotate(360deg);
-            box-shadow: 0 10px 30px rgba(7, 133, 33, 0.5);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(7, 133, 33, 0.6);
+        }
+
+        .social-links a:hover img {
+            filter: brightness(1) invert(0);
         }
 
         .copyright {
@@ -283,7 +368,7 @@
             border-top: 1px solid rgba(7, 133, 33, 0.3);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
             .header-content {
                 flex-direction: column;
                 gap: 20px;
@@ -307,7 +392,9 @@
             }
 
             .service-card {
-                padding: 30px 20px;
+                flex: 0 1 100%;
+                padding: 35px 25px;
+                transform: none !important;
             }
 
             .service-header {
@@ -339,7 +426,7 @@
     <header class="header">
         <div class="header-content">
             <div class="logo-section">
-                <img src="logo.png" alt="Gluten Free Marketing Logo" class="logo">
+                <img src="/logo.png" alt="Gluten Free Marketing Logo" class="logo">
                 <span class="logo-text">Gluten Free Marketing</span>
             </div>
             <nav class="nav-links">
@@ -358,100 +445,102 @@
     </div>
 
     <div class="services-container">
-        <div class="service-card">
-            <div class="service-header">
-                <span class="service-icon">📅</span>
-                <h2>Scheduled Social Media Posting</h2>
+        <div class="services-organic">
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-icon">📅</span>
+                    <h2>Scheduled Social Media Posting</h2>
+                </div>
+                <p>Professional scheduled social media posting services to maintain consistent online presence. We handle content calendars, optimal timing, and automated scheduling across platforms like Instagram, Facebook, LinkedIn, and X, helping your business boost engagement and reach without daily effort.</p>
             </div>
-            <p>Professional scheduled social media posting services to maintain consistent online presence. We handle content calendars, optimal timing, and automated scheduling across platforms like Instagram, Facebook, LinkedIn, and X, helping your business boost engagement and reach without daily effort.</p>
-        </div>
 
-        <div class="service-card">
-            <div class="service-header">
-                <span class="service-icon">📸</span>
-                <h2>Social Media Content Creation (Photo and Video)</h2>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-icon">📸</span>
+                    <h2>Social Media Content Creation (Photo and Video)</h2>
+                </div>
+                <p>Expert social media content creation including high-quality photos and videos tailored to your brand. From product showcases to engaging reels and stories, our custom visuals drive likes, shares, and conversions for small businesses.</p>
             </div>
-            <p>Expert social media content creation including high-quality photos and videos tailored to your brand. From product showcases to engaging reels and stories, our custom visuals drive likes, shares, and conversions for small businesses.</p>
-        </div>
 
-        <div class="service-card">
-            <div class="service-header">
-                <span class="service-icon">🎯</span>
-                <h2>Digital Ads Management</h2>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-icon">🎯</span>
+                    <h2>Digital Ads Management</h2>
+                </div>
+                <p>Targeted digital ads on Google, Facebook, Instagram, and more. We optimize campaigns for maximum ROI, focusing on lead generation, traffic, and sales—perfect for local businesses looking to grow affordably.</p>
             </div>
-            <p>Targeted digital ads on Google, Facebook, Instagram, and more. We optimize campaigns for maximum ROI, focusing on lead generation, traffic, and sales—perfect for local businesses looking to grow affordably.</p>
-        </div>
 
-        <div class="service-card">
-            <div class="service-header">
-                <span class="service-icon">👕</span>
-                <h2>Apparel Printing: Screen Print and Embroidery</h2>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-icon">👕</span>
+                    <h2>Apparel Printing: Screen Print and Embroidery</h2>
+                </div>
+                <p>Custom apparel printing with professional screen printing and embroidery services. Create branded t-shirts, hoodies, uniforms, and promo items for events, teams, or merchandise—high-quality, durable results for your business or organization.</p>
             </div>
-            <p>Custom apparel printing with professional screen printing and embroidery services. Create branded t-shirts, hoodies, uniforms, and promo items for events, teams, or merchandise—high-quality, durable results for your business or organization.</p>
-        </div>
 
-        <div class="service-card">
-            <div class="service-header">
-                <span class="service-icon">🌐</span>
-                <h2>Router and Modem Network Diagnostic and Upgrades</h2>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-icon">🌐</span>
+                    <h2>Router and Modem Network Diagnostic and Upgrades</h2>
+                </div>
+                <p>Reliable router and modem network diagnostic and upgrades for seamless connectivity. We troubleshoot issues, optimize speeds, and upgrade hardware to ensure your business network runs efficiently and securely.</p>
             </div>
-            <p>Reliable router and modem network diagnostic and upgrades for seamless connectivity. We troubleshoot issues, optimize speeds, and upgrade hardware to ensure your business network runs efficiently and securely.</p>
-        </div>
 
-        <div class="service-card">
-            <div class="service-header">
-                <span class="service-icon">💾</span>
-                <h2>Data Backup Solutions</h2>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-icon">💾</span>
+                    <h2>Data Backup Solutions</h2>
+                </div>
+                <p>Secure data backup solutions to protect your business files, customer info, and operations. Automated cloud backups, recovery plans, and offsite storage—prevent data loss and downtime with our expert setup.</p>
             </div>
-            <p>Secure data backup solutions to protect your business files, customer info, and operations. Automated cloud backups, recovery plans, and offsite storage—prevent data loss and downtime with our expert setup.</p>
-        </div>
 
-        <div class="service-card">
-            <div class="service-header">
-                <span class="service-icon">🔍</span>
-                <h2>Data Scraping and Lead Data</h2>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-icon">🔍</span>
+                    <h2>Data Scraping and Lead Data</h2>
+                </div>
+                <p>Ethical data scraping and lead generation services to build targeted prospect lists. Extract contacts from directories, enrich with details, and deliver clean leads for sales and marketing campaigns.</p>
             </div>
-            <p>Ethical data scraping and lead generation services to build targeted prospect lists. Extract contacts from directories, enrich with details, and deliver clean leads for sales and marketing campaigns.</p>
-        </div>
 
-        <div class="service-card">
-            <div class="service-header">
-                <span class="service-icon">📼</span>
-                <h2>VHS to Digital File Conversion</h2>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-icon">📼</span>
+                    <h2>VHS to Digital File Conversion</h2>
+                </div>
+                <p>Professional VHS to digital file conversion services. Preserve old videos, training tapes, or archives by converting to modern formats—ideal for businesses digitizing historical content or personal media.</p>
             </div>
-            <p>Professional VHS to digital file conversion services. Preserve old videos, training tapes, or archives by converting to modern formats—ideal for businesses digitizing historical content or personal media.</p>
-        </div>
 
-        <div class="service-card">
-            <div class="service-header">
-                <span class="service-icon">🤖</span>
-                <h2>Automation and API Expert</h2>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-icon">🤖</span>
+                    <h2>Automation and API Expert</h2>
+                </div>
+                <p>Custom automation and API integrations using tools like n8n. Streamline workflows, connect apps, and automate repetitive tasks to save time and boost efficiency for your operations.</p>
             </div>
-            <p>Custom automation and API integrations using tools like n8n. Streamline workflows, connect apps, and automate repetitive tasks to save time and boost efficiency for your operations.</p>
-        </div>
 
-        <div class="service-card">
-            <div class="service-header">
-                <span class="service-icon">💳</span>
-                <h2>Help Save Credit Card Processing Fees</h2>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-icon">💳</span>
+                    <h2>Help Save Credit Card Processing Fees</h2>
+                </div>
+                <p>Expert guidance to save on credit card processing fees. We audit your setup, recommend lower-rate providers, compliant surcharging, and strategies like ACH promotion—reduce costs without losing sales.</p>
             </div>
-            <p>Expert guidance to save on credit card processing fees. We audit your setup, recommend lower-rate providers, compliant surcharging, and strategies like ACH promotion—reduce costs without losing sales.</p>
-        </div>
 
-        <div class="service-card">
-            <div class="service-header">
-                <span class="service-icon">🖥️</span>
-                <h2>Install New POS Systems</h2>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-icon">🖥️</span>
+                    <h2>Install New POS Systems</h2>
+                </div>
+                <p>Professional installation of new POS systems for retail and restaurants. From hardware setup to software configuration and training—get a modern, efficient point-of-sale solution tailored to your needs.</p>
             </div>
-            <p>Professional installation of new POS systems for retail and restaurants. From hardware setup to software configuration and training—get a modern, efficient point-of-sale solution tailored to your needs.</p>
-        </div>
 
-        <div class="service-card">
-            <div class="service-header">
-                <span class="service-icon">💰</span>
-                <h2>Install New Credit Card Terminals</h2>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-icon">💰</span>
+                    <h2>Install New Credit Card Terminals</h2>
+                </div>
+                <p>Seamless installation of new credit card terminals with compatibility checks, secure setup, and integration into your existing systems. Accept payments faster and more reliably.</p>
             </div>
-            <p>Seamless installation of new credit card terminals with compatibility checks, secure setup, and integration into your existing systems. Accept payments faster and more reliably.</p>
         </div>
 
         <div class="cta-section">
@@ -467,10 +556,18 @@
                 <h3>Gluten Free Marketing</h3>
                 <p>Professional digital services for local businesses. Social media management, content creation, and technology solutions all in one place.</p>
                 <div class="social-links">
-                    <a href="#" aria-label="Instagram">📷</a>
-                    <a href="#" aria-label="TikTok">🎵</a>
-                    <a href="#" aria-label="Facebook">👍</a>
-                    <a href="#" aria-label="YouTube">▶️</a>
+                    <a href="#" aria-label="Instagram">
+                        <img src="/images/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="#" aria-label="TikTok">
+                        <img src="/images/tiktok.png" alt="TikTok">
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <img src="/images/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="#" aria-label="YouTube">
+                        <img src="/images/youtube.png" alt="YouTube">
+                    </a>
                 </div>
             </div>
             <div class="footer-section">
