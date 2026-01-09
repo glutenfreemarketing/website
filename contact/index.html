@@ -198,13 +198,13 @@
             color: #0fc93a;
         }
 
-        .social-links {
+        .contact-detail .social-links {
             display: flex;
             gap: 20px;
             margin-top: 20px;
         }
 
-        .social-links a {
+        .contact-detail .social-links a {
             width: 50px;
             height: 50px;
             background: rgba(7, 133, 33, 0.2);
@@ -217,7 +217,7 @@
             overflow: hidden;
         }
 
-        .social-links a img {
+        .contact-detail .social-links a img {
             width: 28px;
             height: 28px;
             object-fit: contain;
@@ -225,13 +225,13 @@
             transition: filter 0.3s;
         }
 
-        .social-links a:hover {
+        .contact-detail .social-links a:hover {
             background: linear-gradient(135deg, #078521 0%, #0fc93a 100%);
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 10px 30px rgba(7, 133, 33, 0.6);
         }
 
-        .social-links a:hover img {
+        .contact-detail .social-links a:hover img {
             filter: brightness(1) invert(0);
         }
 
@@ -374,6 +374,43 @@
 
         .footer-section a:hover {
             color: #0fc93a;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(7, 133, 33, 0.2);
+            border: 2px solid #078521;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s;
+            overflow: hidden;
+        }
+
+        .social-links a img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            transition: filter 0.3s;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, #078521 0%, #0fc93a 100%);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(7, 133, 33, 0.6);
+        }
+
+        .social-links a:hover img {
+            filter: brightness(1) invert(0);
         }
 
         .copyright {
@@ -522,7 +559,7 @@
             <div class="footer-section">
                 <h3>Gluten Free Marketing</h3>
                 <p>Professional digital services for local businesses. Social media management, content creation, and technology solutions all in one place.</p>
-				<div class="social-links">
+                <div class="social-links">
                     <a href="https://www.instagram.com/glutenfreemarketing" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                         <img src="/images/instagram.png" alt="Instagram">
                     </a>
