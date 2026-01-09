@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Gluten Free Marketing</title>
+    <meta name="description" content="Get in touch with Gluten Free Marketing for social media management, content creation, and digital services.">
+    <link rel="stylesheet" href="https://use.typekit.net/gtq0feg.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #001a0a 0%, #002d14 25%, #001508 50%, #003d1f 75%, #000a05 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 80%, rgba(7, 133, 33, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(15, 201, 58, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(7, 133, 33, 0.05) 0%, transparent 70%);
+            animation: floatBlobs 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes floatBlobs {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(7, 133, 33, 0.3);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid rgba(7, 133, 33, 0.5);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            filter: drop-shadow(0 0 15px rgba(7, 133, 33, 0.6));
+        }
+
+        .logo-text {
+            font-family: "cooper-black-std", serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #078521 0%, #0fc93a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #078521, #0fc93a);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .contact-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 40px;
+            z-index: 1;
+        }
+
+        .page-title {
+            font-family: "cooper-black-std", serif;
+            font-size: 3.5em;
+            background: linear-gradient(135deg, #078521 0%, #0fc93a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .page-subtitle {
+            color: #bbb;
+            font-size: 1.3em;
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .contact-info {
+            background: rgba(15, 30, 20, 0.6);
+            backdrop-filter: blur(15px);
+            padding: 50px;
+            border-radius: 30px;
+            border: 2px solid rgba(7, 133, 33, 0.4);
+        }
+
+        .contact-info h2 {
+            font-family: "cooper-black-std", serif;
+            color: #0fc93a;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .contact-detail {
+            margin-bottom: 30px;
+        }
+
+        .contact-detail h3 {
+            color: #0fc93a;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-detail p, .contact-detail a {
+            color: #ccc;
+            font-size: 1.1em;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-detail a:hover {
+            color: #0fc93a;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(7, 133, 33, 0.2);
+            border: 2px solid #078521;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s;
+        }
+
+        .social-links a img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            transition: filter 0.3s;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, #078521 0%, #0fc93a 100%);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(7, 133, 33, 0.6);
+        }
+
+        .social-links a:hover img {
+            filter: brightness(1) invert(0);
+        }
+
+        .contact-form-container {
+            background: rgba(15, 30, 20, 0.6);
+            backdrop-filter: blur(15px);
+            padding: 50px;
+            border-radius: 30px;
+            border: 2px solid rgba(7, 133, 33, 0.4);
+        }
+
+        .contact-form-container h2 {
+            font-family: "cooper-black-std", serif;
+            color: #0fc93a;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #0fc93a;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(7, 133, 33, 0.3);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1em;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #0fc93a;
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 20px rgba(7, 133, 33, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: #001a0a;
+            color: #fff;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #078521 0%, #0fc93a 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(7, 133, 33, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-button:hover:before {
+            left: 100%;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(7, 133, 33, 0.6);
+        }
+
+        .submit-button:active {
+            transform: translateY(-1px);
+        }
+
+        .footer {
+            position: relative;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 60px 40px 20px;
+            margin-top: 120px;
+            border-top: 2px solid rgba(7, 133, 33, 0.5);
+            z-index: 1;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-family: "cooper-black-std", serif;
+            color: #0fc93a;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #0fc93a;
+        }
+
+        .footer .social-links {
+            margin-top: 20px;
+        }
+
+        .copyright {
+            color: #666;
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(7, 133, 33, 0.3);
+        }
+
+        @media (max-width: 968px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 2.5em;
+            }
+
+            .contact-info,
+            .contact-form-container {
+                padding: 30px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="/logo.png" alt="Gluten Free Marketing Logo" class="logo">
+                <span class="logo-text">Gluten Free Marketing</span>
+            </div>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/services">Services</a>
+                <a href="/pricing">Pricing</a>
+                <a href="/contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="contact-container">
+        <h1 class="page-title">Get In Touch</h1>
+        <p class="page-subtitle">Ready to elevate your digital presence? Reach out to discuss how we can help your business grow.</p>
+
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                
+                <div class="contact-detail">
+                    <h3>📧 Email</h3>
+                    <a href="mailto:glutenfreemarketing@proton.me">glutenfreemarketing@proton.me</a>
+                </div>
+
+                <div class="contact-detail">
+                    <h3>⏰ Response Time</h3>
+                    <p>We typically respond within 24 hours</p>
+                </div>
+
+                <div class="contact-detail">
+                    <h3>🌐 Follow Us</h3>
+                    <p>Stay connected on social media</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/glutenfreemarketing" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <img src="/images/instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.tiktok.com/@glutenfreemarketing" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                            <img src="/images/tiktok.png" alt="TikTok">
+                        </a>
+                        <a href="https://www.facebook.com/61585115773063" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <img src="/images/facebook.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.youtube.com/glutenfreemarketing" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                            <img src="/images/youtube.png" alt="YouTube">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <h2>Send Us a Message</h2>
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Service Interested In</label>
+                        <select id="service" name="service">
+                            <option value="">Select a service...</option>
+                            <option value="social-media">Social Media Management</option>
+                            <option value="content-creation">Content Creation</option>
+                            <option value="digital-ads">Digital Ads Management</option>
+                            <option value="apparel">Apparel Printing</option>
+                            <option value="network">Network Solutions</option>
+                            <option value="data-backup">Data Backup</option>
+                            <option value="automation">Automation & API</option>
+                            <option value="payment">Payment Solutions</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Gluten Free Marketing</h3>
+                <p>Professional digital services for local businesses. Social media management, content creation, and technology solutions all in one place.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/glutenfreemarketing" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <img src="/images/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://www.tiktok.com/@glutenfreemarketing" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <img src="/images/tiktok.png" alt="TikTok">
+                    </a>
+                    <a href="https://www.facebook.com/61585115773063" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <img src="/images/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="https://www.youtube.com/glutenfreemarketing" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <img src="/images/youtube.png" alt="YouTube">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="/services">Services</a>
+                <a href="/pricing">Pricing</a>
+                <a href="/contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a href="mailto:glutenfreemarketing@proton.me">glutenfreemarketing@proton.me</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Gluten Free Marketing. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
